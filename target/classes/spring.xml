@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="classC"  class="spp.com.beans.ClassC" scope="prototype" lazy-init="true">
+    </bean>
+    <!-- bean definitions here -->
+
+    <bean id="classA"  class="spp.com.beans.ClassA" lazy-init="true">
+      <constructor-arg type="spp.com.beans.ClassB" index="0" ref ="classB">
+       </constructor-arg>
+        <property name="name"  value=":I am Class A"></property>
+        <property name="ssn" value="27822"></property>
+        <property name="salary" value="45000.45"></property>
+    </bean>
+    <bean id="classB"  class="spp.com.beans.ClassB" lazy-init="true">
+        <property name="className" value="I am Class B :)"></property>
+    </bean>
+
+<bean name="classP" class="spp.com.beans.ClassPLifeCycle" lazy-init="true">
+    <property name="myclassName" value="I am ClassP For Lifcyle Activity"></property>
+</bean>
+
+    <bean name="classR" class="spp.com.beans.ClassRLIfeCycleWithotoutInterface" init-method="initBean"  destroy-method="detroybean">
+        <property name="myClassName" value="I am ClassP For Lifcyle Activity"></property>
+    </bean>
+
+</beans>
